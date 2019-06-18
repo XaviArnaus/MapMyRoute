@@ -1,0 +1,7 @@
+{
+  "last-update": "2019-06-18 13:33:00",
+  "filename_template": "event_%s.json",
+  "display_template": "dark",
+  "current_event_name": "name of the event",
+  "google_maps_api_key": "AAABBBCCC123"
+}
