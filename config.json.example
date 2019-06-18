@@ -2,6 +2,7 @@
   "last-update": "2019-06-18 13:33:00",
   "filename_template": "event_%s.json",
   "display_template": "dark",
-  "current_event_name": "name of the event",
+  "current_event_name": "name of the event"
+  "initial_zoom": 5,
   "google_maps_api_key": "AAABBBCCC123"
 }

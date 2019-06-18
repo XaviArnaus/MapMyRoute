@@ -27,7 +27,7 @@
             var stackLatLng = {%-ARRAY_MARKERS-%};
 
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
+                zoom: {%-INITIAL_ZOOM-%},
                 center: stackLatLng[0]
             });
 
