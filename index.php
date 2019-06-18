@@ -4,8 +4,8 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once "classes/Config.php";
-require_once "classes/Reader.php";
 require_once "classes/Parser.php";
+require_once "classes/Reader.php";
 require_once "classes/Render.php";
 
 class Main {
@@ -16,8 +16,8 @@ class Main {
 
     public function init() {
         $this->config = new Config();
-        $this->reader = new Reader($config, new Parser());
-        $this->render = new Render($config);
+        $this->reader = new Reader($this->config, new Parser());
+        $this->render = new Render($this->config);
     }
 
     public function run() {

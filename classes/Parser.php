@@ -10,7 +10,7 @@ class Parser {
         foreach($json_source as $json_marker) {
             $markers[]= new Marker(
                 $json_marker->lat,
-                $json_marker->long
+                $json_marker->lng
             );
         }
         return $markers;

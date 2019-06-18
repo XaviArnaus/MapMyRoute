@@ -17,8 +17,8 @@
             markers.push(
                 new google.maps.Marker({
                     position: coordinates,
-                    map: map//,
-                    //title: 'Hello World!'
+                    map: map,
+                    title: 'Hello World!'
                 })
             );
         }
@@ -27,8 +27,8 @@
             var stackLatLng = {%-ARRAY_MARKERS-%};
 
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4//,
-                //center: myLatLng
+                zoom: 4,
+                center: stackLatLng[0]
             });
 
             stackLatLng.forEach(createMarker);
