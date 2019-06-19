@@ -8,17 +8,20 @@ require_once "classes/Parser.php";
 require_once "classes/Reader.php";
 require_once "objects/Marker.php";
 require_once "classes/RenderForm.php";
+require_once "classes/Writer.php";
 
 class Main {
     const VERSION = 1;
     private $config;
     private $reader;
     private $render;
+    private $writer;
 
     public function init() {
         $this->config = new Config();
         $this->reader = new Reader($this->config, new Parser());
         $this->render = new RenderForm($this->config);
+        $this->writer = new Writer($this->config);
     }
 
     public function run() {
@@ -36,8 +39,9 @@ class Main {
                     $new_marker->name = $post["name"];
                 }
                 $event_markers[] = $new_marker;
-                var_dump($event_markers);
+                $this->writer->writeResults($event_markers);
 
+                header("Location: /");
             } else {
                 $this->render->show();
             }

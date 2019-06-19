@@ -10,7 +10,8 @@ class Parser {
         foreach($json_source as $json_marker) {
             $current_marker = new Marker(
                 $json_marker->lat,
-                $json_marker->lng
+                $json_marker->lng,
+                $json_marker->timestamp
             );
             if (isset($json_marker->name)) {
                 $current_marker->name = $json_marker->name;
