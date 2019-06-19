@@ -84,14 +84,18 @@ function arrayMax(arr) {
 function initMap() {
     var stackLatLng = {%-ARRAY_MARKERS-%};
 
-    map = new google.maps.Map(document.getElementById('map'), {
-            zoom: {%-INITIAL_ZOOM-%},
-        center: stackLatLng[0],
-        mapTypeId: 'terrain'
-});
+    if(stackLatLng.length > 0) {
+        map = new google.maps.Map(document.getElementById('map'), {
+                zoom: {%-INITIAL_ZOOM-%},
+            center: stackLatLng[0],
+            mapTypeId: 'terrain'
+        });
 
-    drawMarkers(stackLatLng);
-    createLine(stackLatLng);
+        drawMarkers(stackLatLng);
+        createLine(stackLatLng);
 
-    calculateCenter(stackLatLng);
+        calculateCenter(stackLatLng);
+    } else {
+        alert("No points have been registered yet.\nJust wait and come back later");
+    }
 }
