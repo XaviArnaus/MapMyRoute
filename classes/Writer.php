@@ -1,5 +1,7 @@
 <?php
 
+require_once "String.php";
+
 class Writer {
     const DEFAULT_TEMPLATE = "event_%s.json";
     private $events_path = "";
@@ -24,7 +26,7 @@ class Writer {
 
     private function suggestFilename(Config $config) {
         $template = $config->getParam("filename_template", self::DEFAULT_TEMPLATE);
-        $this->file_name = sprintf($template, urlencode($config->getParam("current_event_name")));
+        $this->file_name = sprintf($template, String::filter_filename($config->getParam("current_event_name")));
     }
 
     private function createEventsPath() {

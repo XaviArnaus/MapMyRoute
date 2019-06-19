@@ -1,5 +1,7 @@
 <?php
 
+require_once "String.php";
+
 class Reader {
 
     private $events_path = "";
@@ -47,6 +49,6 @@ class Reader {
     }
 
     private function getFileFromEventName($event_name) {
-        return urlencode($event_name);
+        return String::filter_filename($event_name);
     }
 }
