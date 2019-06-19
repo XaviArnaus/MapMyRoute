@@ -38,6 +38,7 @@ class Main {
                 if (isset($post["name"])) {
                     $new_marker->name = $post["name"];
                 }
+                $new_marker->applyTimezoneCorrection($this->config);
                 $event_markers[] = $new_marker;
                 $this->writer->writeResults($event_markers);
 
