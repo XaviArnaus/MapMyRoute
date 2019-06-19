@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 require_once "classes/Config.php";
 require_once "classes/Parser.php";
 require_once "classes/Reader.php";
-require_once "classes/Render.php";
+require_once "classes/RenderMap.php";
 
 class Main {
     const VERSION = 1;
@@ -17,7 +17,7 @@ class Main {
     public function init() {
         $this->config = new Config();
         $this->reader = new Reader($this->config, new Parser());
-        $this->render = new Render($this->config);
+        $this->render = new RenderMap($this->config);
     }
 
     public function run() {

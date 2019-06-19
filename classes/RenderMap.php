@@ -1,6 +1,6 @@
 <?php
 
-class Render {
+class RenderMap {
 
     private $config;
     private $markers;
