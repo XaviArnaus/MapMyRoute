@@ -2,44 +2,18 @@ body {
     font-family: Helvetica, sans-serif;
     background-color: black;
     color: white;
+    height: 100%;
+    margin: 0;
+    padding: 0
 }
-.main-info {
-    border-radius: 5px;
-    background-color: lavender;
-    color: black;
-    padding: 5px;
-    margin: 2px;
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+    height: 100%;
 }
+
 .separator {
     width: 100%;
     margin: 5px;
     border-top: 1px black;
-}
-.service-result {
-    float: left;
-    border-radius: 5px;
-    background-color: lavender;
-    color: black;
-    padding: 5px;
-    margin: 2px;
-}
-.validation-results {
-    vertical-align: center;
-}
-.validation-result {
-    float: right;
-    padding: 2px;
-    margin: 3px;
-    border-radius: 5px;
-    display: inline-block;
-    color: black;
-}
-.expected {
-    text-align: center;
-}
-.valid{
-    background-color: #27AE60;
-}
-.invalid{
-    background-color: #E74C3C;
 }

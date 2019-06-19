@@ -4,5 +4,8 @@
   "display_template": "dark",
   "current_event_name": "name of the event"
   "initial_zoom": 5,
+  "stroke_color": "#FF0000",
+  "stroke_opacity": 1.0,
+  "stroke_weight": 2,
   "google_maps_api_key": "AAABBBCCC123"
 }

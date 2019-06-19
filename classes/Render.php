@@ -12,6 +12,7 @@ class Render {
         $this->choosen_template = $config->getParam("display_template", "light");
         $this->templates = [
             "styles"            => "templates/" . $this->choosen_template . "/styles.css",
+            "script"            => "templates/js/script.js",
             "layout"            => "templates/" . $this->choosen_template . "/layout.html"
         ];
     }
@@ -26,8 +27,12 @@ class Render {
             "layout",
             [
                 "{%-STYLES-%}" => $this->renderTemplate("styles"),
+                "{%-SCRIPT-%}" => $this->renderTemplate("script"),
                 "{%-EVENT_NAME-%}" => $this->config->getParam("current_event_name"),
                 "{%-INITIAL_ZOOM-%}" => $this->config->getParam("initial_zoom", 5),
+                "{%-STROKE_COLOR-%}" => $this->config->getParam("stroke_color"),
+                "{%-STROKE_OPACITY-%}" => $this->config->getParam("stroke_opacity"),
+                "{%-STROKE_WEIGHT-%}" => $this->config->getParam("stroke_weight"),
                 "{%-ARRAY_MARKERS-%}" => "[" . join(", ",
                     array_map(
                         function (Marker $marker){
