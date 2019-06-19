@@ -4,20 +4,20 @@ Register coordinates and show them in a Google Maps.
 - Current **coordinates** gathered via JS. Very convenient.
 
 # Tech details
-Simple Web script
+Simple Web script using:
 - PHP
 - HTML
 - CSS
 - JS
 
-
+Pluses:
 - No MySQL. Storage is Disk. JSON based.
 - Main Config file.
 
 # Warnings
 
 - Main blocker is Google Maps. You need a Google Maps API key. Get one [here](https://developers.google.com/maps/documentation/embed/get-api-key)
-- Location gathering via JS requires HTTPS. 
+- Location gathering via JS requires HTTPS. Locally works good.
 
 # Install
 
@@ -36,7 +36,10 @@ Assuming you have an apache virtual host prepared. Let's say `https://localhost`
     - Set the Google Maps API key
     - Set the `current_event_example`: A name shown as a title and part of the file name
     - Choose between a `light` or `dark` theme
-1. Visit the root of your virtual host in the browser. Profit. 
+1. Visit the root of your virtual host in the browser.
+    ```
+    https://localhost
+    ``` 
 
 # Notes
 
