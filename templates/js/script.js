@@ -1,6 +1,8 @@
 var markers = [];
 var routePath;
 var map;
+var latitudes = [];
+var longitudes = [];
 
 function createMarker(marker) {
     markers.push(
@@ -29,13 +31,45 @@ function createLine(list_coordinates) {
 
 function drawMarkers(list_coordinates) {
     for (var i = 0, len = list_coordinates.length; i < len; i++) {
-        console.log("coordinate " + i);
-        console.log(list_coordinates[i]);
         if (list_coordinates[i].hasOwnProperty("name")) {
-            console.log("name " + list_coordinates[i].name);
             createMarker(list_coordinates[i]);
         }
     }
+}
+
+function calculateCenter(list_coordinates) {
+    for (var i = 0, len = list_coordinates.length; i < len; i++) {
+        latitudes.push(list_coordinates[i].lat);
+        longitudes.push(list_coordinates[i].lng);
+    }
+
+    var lat_min = arrayMin(latitudes);
+    var lat_max = arrayMax(latitudes);
+    var lng_min = arrayMin(longitudes);
+    var lng_max = arrayMax(longitudes);
+
+    map.setCenter(new google.maps.LatLng(
+        ((lat_max + lat_min) / 2.0),
+        ((lng_max + lng_min) / 2.0)
+    ));
+    map.fitBounds(new google.maps.LatLngBounds(
+        //bottom left
+        new google.maps.LatLng(lat_min, lng_min),
+        //top right
+        new google.maps.LatLng(lat_max, lng_max)
+    ));
+}
+
+function arrayMin(arr) {
+    return arr.reduce(function (p, v) {
+        return ( p < v ? p : v );
+    });
+}
+
+function arrayMax(arr) {
+    return arr.reduce(function (p, v) {
+        return ( p > v ? p : v );
+    });
 }
 
 function initMap() {
@@ -49,4 +83,6 @@ function initMap() {
 
     drawMarkers(stackLatLng);
     createLine(stackLatLng);
+
+    calculateCenter(stackLatLng);
 }
