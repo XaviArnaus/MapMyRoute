@@ -11,6 +11,74 @@ body {
     height: 100%;
 }
 
+
+#wrapper {
+    background: #ccc;
+    margin: 0 auto; /* to make the div center align to the browser */
+    padding: 20px;
+    width: 500px; /* set it to anything */
+    text-align: center;
+}
+#wrapper ul {
+    background: #aaa;
+    padding: 10px;
+    display: inline-block;
+}
+#wrapper ul li {
+    color: #fff;
+    display: inline-block;
+    margin: 0 20px 0 0;
+}
+#wrapper ul li:last-child {
+    color: #fff;
+    display: inline-block;
+    margin: 0;
+}
+
+
+
+#main-frame {
+    margin: 0 auto;
+}
+
+#main-container {
+    display: inline-block;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 10px;
+    background-color: lightgray;
+}
+
+#title {
+    text-align: center;
+}
+
+#main-form {
+    display: inline-block;
+    overflow: hidden;
+    margin-top: 25px;
+}
+#main-form input {
+    float: right;
+}
+#main-form input:last-child {
+    float: right;
+    clear: both;
+}
+#main-form .label {
+    float: left;
+}
+
+#buttons {
+    /*clear: both;*/
+    margin-top: 25px;
+}
+
+
+.center{
+    margin: auto;
+}
+
 .separator {
     width: 100%;
     margin: 5px;
