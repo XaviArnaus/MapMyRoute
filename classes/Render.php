@@ -27,7 +27,7 @@ class Render {
             [
                 "{%-STYLES-%}" => $this->renderTemplate("styles"),
                 "{%-EVENT_NAME-%}" => $this->config->getParam("current_event_name"),
-                "{%-INITIAL_ZOOM-%}" => $this->config->getParam("initial_zoom"),
+                "{%-INITIAL_ZOOM-%}" => $this->config->getParam("initial_zoom", 5),
                 "{%-ARRAY_MARKERS-%}" => "[" . join(", ",
                     array_map(
                         function (Marker $marker){

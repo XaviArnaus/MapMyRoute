@@ -8,10 +8,14 @@ class Parser {
         $markers = [];
         $json_source = json_decode($event_file_content, false);
         foreach($json_source as $json_marker) {
-            $markers[]= new Marker(
+            $current_marker = new Marker(
                 $json_marker->lat,
                 $json_marker->lng
             );
+            if (isset($json_marker->name)) {
+                $current_marker->name = $json_marker->name;
+            }
+            $markers[]=$current_marker;
         }
         return $markers;
     }

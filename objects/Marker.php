@@ -3,6 +3,7 @@
 class Marker {
     public $latitude;
     public $longitude;
+    public $name;
 
     public function __construct($latitude, $longitude) {
         $this->latitude = $latitude;
@@ -10,6 +11,10 @@ class Marker {
     }
 
     public function toString() {
-        return "{lat: " . $this->latitude . ", lng: " . $this->longitude . "}";
+        if ($this->name != null) {
+            return "{lat: " . $this->latitude . ", lng: " . $this->longitude . ", name: '" . $this->name . "'}";
+        } else {
+            return "{lat: " . $this->latitude . ", lng: " . $this->longitude . "}";
+        }
     }
 }
