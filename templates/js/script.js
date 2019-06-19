@@ -5,16 +5,25 @@ var latitudes = [];
 var longitudes = [];
 
 function createMarker(marker) {
-    markers.push(
-        new google.maps.Marker({
-            position: {
-                lat: marker.lat,
-                lng: marker.lng
-            },
-            map: map,
-            title: marker.name
-        })
-    );
+    let map_marker = new google.maps.Marker({
+        position: {
+            lat: marker.lat,
+            lng: marker.lng
+        },
+        map: map,
+        title: marker.name
+    });
+    map_marker.addListener('click', function() {
+        makeInfoWinfow(marker).open(map, map_marker);
+    });
+
+    markers.push(map_marker);
+}
+
+function makeInfoWinfow(marker) {
+    return new google.maps.InfoWindow({
+        content: "<div id='content'><b>" + marker.name + "</b><br/><i>" + marker.timestamp + "</i>&nbsp;"
+    });
 }
 
 function createLine(list_coordinates) {
