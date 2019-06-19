@@ -1,7 +1,7 @@
 <?php
 
 
-class String
+class Strings
 {
     public static function filter_filename($filename, $beautify=true) {
         // sanitize filename

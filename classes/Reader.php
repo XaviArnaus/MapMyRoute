@@ -1,6 +1,6 @@
 <?php
 
-require_once "String.php";
+require_once "Strings.php";
 
 class Reader {
 
@@ -49,6 +49,6 @@ class Reader {
     }
 
     private function getFileFromEventName($event_name) {
-        return String::filter_filename($event_name);
+        return Strings::filter_filename($event_name);
     }
 }
