@@ -53,15 +53,21 @@ class Main {
     }
 
     private function getPost() {
+        $safePost = filter_input_array(INPUT_POST, [
+            "latitude" => FILTER_VALIDATE_FLOAT,
+            "longitude" => FILTER_VALIDATE_FLOAT,
+            "name" => FILTER_SANITIZE_STRING
+        ]);
+
         $post = [];
-        if(isset($_POST["latitude"]) && !empty($_POST["latitude"])) {
-            $post["lat"] = $_POST["latitude"];
+        if(isset($safePost["latitude"]) && !empty($safePost["latitude"])) {
+            $post["lat"] = $safePost["latitude"];
         }
-        if(isset($_POST["longitude"]) && !empty($_POST["longitude"])) {
-            $post["lng"] = $_POST["longitude"];
+        if(isset($safePost["longitude"]) && !empty($safePost["longitude"])) {
+            $post["lng"] = $safePost["longitude"];
         }
-        if(isset($_POST["name"]) && !empty($_POST["name"])) {
-            $post["name"] = $_POST["name"];
+        if(isset($safePost["name"]) && !empty($safePost["name"])) {
+            $post["name"] = $safePost["name"];
         }
 
         if (count($post) > 0) {
