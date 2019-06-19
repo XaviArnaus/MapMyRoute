@@ -12,7 +12,7 @@ class RenderForm {
         $this->templates = [
             "styles"            => "templates/" . $this->choosen_template . "/styles.css",
             "script"            => "templates/js/script_form.js",
-            "layout"            => "templates/" . $this->choosen_template . "/layout_form.html"
+            "layout"            => "templates/common/layout_form.html"
         ];
     }
 
