@@ -1,7 +1,5 @@
 <?php
 
-require_once "objects/Marker.php";
-
 class Parser {
 
     public function instantiateMarkers($event_file_content) {
