@@ -41,6 +41,7 @@ class Main {
             );
 
             $this->render->setMarkersToDisplay($current_event_markers);
+            $this->render->setDrawLines(false);
             $this->render->show();
             
         } catch (Exception $e) {

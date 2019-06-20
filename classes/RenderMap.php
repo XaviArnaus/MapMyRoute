@@ -6,6 +6,7 @@ class RenderMap {
     private $markers;
     private $templates;
     private $choosen_template;
+    private $draw_lines = true;
 
     public function __construct(Config $config) {
         $this->config = $config;
@@ -21,6 +22,10 @@ class RenderMap {
         $this->markers = $markers;
     }
 
+    public function setDrawLines($should_draw_lines = true) {
+        $this->draw_lines = $should_draw_lines;
+    }
+
     public function show() {
 
         $content = $this->renderTemplate(
@@ -30,6 +35,7 @@ class RenderMap {
                 "{%-SCRIPT-%}" => $this->renderTemplate("script"),
                 "{%-EVENT_NAME-%}" => $this->config->getParam("current_event_name"),
                 "{%-INITIAL_ZOOM-%}" => $this->config->getParam("initial_zoom", 5),
+                "{%-DRAW_LINES-%}" => $this->draw_lines ? "true" : "false",
                 "{%-STROKE_COLOR-%}" => $this->config->getParam("stroke_color"),
                 "{%-STROKE_OPACITY-%}" => $this->config->getParam("stroke_opacity"),
                 "{%-STROKE_WEIGHT-%}" => $this->config->getParam("stroke_weight"),

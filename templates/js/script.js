@@ -84,6 +84,7 @@ function arrayMax(arr) {
 
 function initMap() {
     var stackLatLng = {%-ARRAY_MARKERS-%};
+    var should_draw_lines = {%-DRAW_LINES-%};
 
     if(stackLatLng.length > 0) {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -93,7 +94,9 @@ function initMap() {
         });
 
         drawMarkers(stackLatLng);
-        createLine(stackLatLng);
+        if(should_draw_lines) {
+            createLine(stackLatLng);
+        }
 
         calculateCenter(stackLatLng);
     } else {
