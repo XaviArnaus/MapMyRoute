@@ -21,6 +21,7 @@ function createMarker(marker) {
 }
 
 function makeInfoWinfow(marker) {
+
     return new google.maps.InfoWindow({
         content: "<div id='content'><b>" + marker.name + "</b><br/><i>" + marker.timestamp + "</i>&nbsp;"
     });

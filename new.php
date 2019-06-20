@@ -11,7 +11,6 @@ require_once "classes/RenderForm.php";
 require_once "classes/Writer.php";
 
 class Main {
-    const VERSION = 1;
     private $config;
     private $reader;
     private $render;

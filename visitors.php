@@ -4,7 +4,6 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once "classes/Config.php";
-require_once "classes/Parser.php";
 require_once "classes/Reader.php";
 require_once "classes/RenderMap.php";
 require_once "classes/VisitorsLogging.php";
@@ -14,27 +13,35 @@ require_once "objects/Visit.php";
 
 class Main {
     private $config;
-    private $reader;
     private $render;
     private $visit_logger;
 
     public function init() {
         $this->config = new Config();
-        $this->reader = new Reader($this->config, new Parser());
         $this->render = new RenderMap($this->config);
         $this->visit_logger = new VisitorsLogging($this->config);
     }
 
     public function run() {
         try{
-            $current_event_markers = $this->reader->getCurrentEvent(
-                $this->config->getParam("current_event_name", "example")
+            $current_visitors = $this->visit_logger->getCurrentEventLogs();
+
+            $current_event_markers = array_map(
+                function(Visit $visit) {
+                    $marker = new Marker($visit->latitude, $visit->longitude, $visit->timestamp);
+                    $marker->name = sprintf(
+                        "%s, %s, %s",
+                        $visit->city,
+                        $visit->region_name,
+                        $visit->country_name
+                    );
+                    return $marker;
+                },
+                $current_visitors
             );
 
             $this->render->setMarkersToDisplay($current_event_markers);
             $this->render->show();
-
-            $this->visit_logger->log();
             
         } catch (Exception $e) {
             var_dump($e);
