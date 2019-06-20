@@ -35,6 +35,7 @@ class Main {
                         $visit->region_name,
                         $visit->country_name
                     );
+                    $marker->applyTimezoneCorrection($this->config, "Y-m-d H:i:s");
                     return $marker;
                 },
                 $current_visitors

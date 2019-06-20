@@ -38,12 +38,12 @@ class Marker {
         return (object)$this->toArray();
     }
 
-    public function applyTimezoneCorrection(Config $config) {
+    public function applyTimezoneCorrection(Config $config, $datetime_format = "d/m/Y H:i:s") {
         $timezone_correction = $config->getParam("timezone_displacement");
 
         $pieces = null;
         preg_match('/([+-])([0-9])/', $timezone_correction, $pieces);
-        $timestamp = DateTime::createFromFormat("d/m/Y H:i:s", $this->timestamp);
+        $timestamp = DateTime::createFromFormat($datetime_format, $this->timestamp);
         if($pieces[1]=="+") {
             $timestamp->add(new DateInterval("PT{$pieces[2]}H"));
         } elseif($pieces[1]=="-") {
@@ -51,6 +51,6 @@ class Marker {
         } else {
             // Do nothing.
         }
-        $this->timestamp = $timestamp->format('Y-m-d H:i:s');
+        $this->timestamp = $timestamp->format($datetime_format);
     }
 }
