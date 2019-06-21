@@ -2,7 +2,7 @@
 
 class VisitorsLogging
 {
-    const DEFAULT_TEMPLATE = "log_%s_%s.json";
+    const DEFAULT_TEMPLATE = "log_%s.json";
     private $now;
     private $logs_path = "";
     private $file_name = "";
@@ -64,8 +64,7 @@ class VisitorsLogging
     private function suggestFilename(Config $config) {
         $this->file_name = sprintf(
             self::DEFAULT_TEMPLATE,
-            Strings::filter_filename($config->getParam("current_event_name")),
-            $this->now
+            Strings::filter_filename($config->getParam("current_event_name"))
         );
     }
 
