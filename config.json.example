@@ -10,7 +10,8 @@
   "visitors_origin": {
       "default": "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
       "qr": "http://maps.google.com/mapfiles/ms/icons/orange-dot.png",
-      "social": "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+      "social": "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+      "profile": "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
     },
 
   "filename_template": "event_%s.json",
