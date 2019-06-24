@@ -31,7 +31,9 @@ class Main {
                     $marker = new Marker(
                         $visit->latitude,
                         $visit->longitude,
-                        $this->config->getParam("visitors_origin")[$visit->origin],
+                        isset($this->config->getParam("visitors_origin")[$visit->origin]) ?
+                                $this->config->getParam("visitors_origin")[$visit->origin] :
+                            $this->config->getParam("visitors_origin")["default"],
                         $visit->timestamp
                     );
                     $marker->name = sprintf(
