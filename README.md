@@ -44,4 +44,5 @@ Assuming you have an apache virtual host prepared. Let's say `https://localhost`
 # Notes
 
 - Works great testing using a quick docker like my [KISS apache PHP](https://github.com/XaviArnaus/kiss-apache-php)
+- [List of icons by Google ready to use](https://sites.google.com/site/gmapsdevelopment/)
     
