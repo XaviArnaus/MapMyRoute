@@ -46,8 +46,7 @@ body, html {
 }
 
 #buttons {
-    /*clear: both;*/
-    margin-top: 25px;
+    margin-top: 50px;
 }
 
 #map-container {

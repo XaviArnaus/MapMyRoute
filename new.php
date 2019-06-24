@@ -18,7 +18,7 @@ class Main {
 
     public function init() {
         $this->config = new Config();
-        $this->reader = new Reader($this->config, new Parser());
+        $this->reader = new Reader($this->config, new Parser($this->config));
         $this->render = new RenderForm($this->config);
         $this->writer = new Writer($this->config);
     }
