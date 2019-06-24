@@ -3,26 +3,24 @@
 class VisitorsLogging
 {
     const DEFAULT_TEMPLATE = "log_%s.json";
-    private $now;
     private $logs_path = "";
     private $file_name = "";
     private $service = "http://www.geoplugin.net/xml.gp?ip=%s";
 
     public function __construct(Config $config)  {
-        $this->now = date("Y-m-d");
         $this->logs_path = $config->getParam("logs_path", "logs");
         $this->createLogsPath();
         $this->suggestFilename($config);
     }
 
-    public function log() {
+    public function log($origin = 'default') {
         $visits_stack = $this->getCurrentEventLogs();
 
         $visits_stack[]=Visit::fromXmlVisitorData(
             $this->getVisitorDataFromIp(
                 $this->getIP()
             )
-        );
+        )->setOrigin($origin);
 
         $this->writeLogStack($visits_stack);
     }

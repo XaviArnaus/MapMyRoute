@@ -7,6 +7,11 @@
   "stroke_color": "#FF0000",
   "stroke_opacity": 1.0,
   "stroke_weight": 2,
+  "visitors_origin": {
+      "default": "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+      "qr": "http://maps.google.com/mapfiles/ms/icons/orange-dot.png",
+      "social": "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+    },
 
   "filename_template": "event_%s.json",
   "on_events_file_not_found_create_new": true,

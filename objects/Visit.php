@@ -4,6 +4,7 @@
 class Visit
 {
     public $timestamp;
+    public $origin; // If the visitor used any GET identification param
 
     public $request_ip;
     public $city;
@@ -73,6 +74,12 @@ class Visit
         $visit->timezone = (string) $xml_data->geoplugin_timezone;
 
         return $visit;
+    }
+
+    public function setOrigin($origin = 'default') {
+        $this->origin = $origin;
+
+        return $this;
     }
 
 }

@@ -5,18 +5,29 @@ class Marker {
     public $longitude;
     public $name;
     public $timestamp;
+    public $icon = null;
 
-    public function __construct($latitude, $longitude, $timestamp = null) {
+    public function __construct($latitude, $longitude, $icon, $timestamp = null) {
         $this->latitude = $latitude;
         $this->longitude = $longitude;
+        $this->icon = $icon;
         $this->timestamp = $timestamp == null ? date("d/m/Y H:i:s") : $timestamp;
     }
 
     public function toString() {
         if ($this->name != null) {
-            return "{timestamp: '" . $this->timestamp . "', lat: " . $this->latitude . ", lng: " . $this->longitude . ", name: '" . $this->name . "'}";
+            return "{timestamp: '" . $this->timestamp .
+                "', lat: " . $this->latitude .
+                ", lng: " . $this->longitude .
+                ", name: '" . $this->name . "'" .
+                ", icon: '" . $this->icon . "'" .
+                "}";
         } else {
-            return "{timestamp: '" . $this->timestamp . "', lat: " . $this->latitude . ", lng: " . $this->longitude . "}";
+            return "{timestamp: '" . $this->timestamp .
+                "', lat: " . $this->latitude .
+                ", lng: " . $this->longitude .
+                ", icon: '" . $this->icon . "'" .
+                "}";
         }
     }
 
@@ -24,7 +35,8 @@ class Marker {
         $result = [
             "timestamp" => $this->timestamp,
             "lat" => $this->latitude,
-            "lng" => $this->longitude
+            "lng" => $this->longitude,
+            "icon" => $this->icon
         ];
 
         if ($this->name != null) {

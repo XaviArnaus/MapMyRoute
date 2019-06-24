@@ -47,6 +47,15 @@ class RenderMap {
                         $this->markers
                     )
                 ) . "]",
+                "{%-ICON_MARKERS-%}" => "{" . join(", ",
+                    array_map(
+                        function ($icon, $origin) {
+                            return '"' . $origin .'": "' . $icon . '"';
+                        },
+                        $this->config->getParam("visitors_origin"),
+                        array_keys($this->config->getParam("visitors_origin"))
+                    )
+                ) . "}",
                 "{%-API_KEY-%}" => $this->config->getParam("google_maps_api_key")
             ]
         );

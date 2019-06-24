@@ -11,7 +11,8 @@ function createMarker(marker) {
             lng: marker.lng
         },
         map: map,
-        title: marker.name
+        title: marker.name,
+        icon: marker.icon
     });
     map_marker.addListener('click', function() {
         makeInfoWinfow(marker).open(map, map_marker);

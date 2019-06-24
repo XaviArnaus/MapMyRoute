@@ -28,7 +28,12 @@ class Main {
 
             $current_event_markers = array_map(
                 function(Visit $visit) {
-                    $marker = new Marker($visit->latitude, $visit->longitude, $visit->timestamp);
+                    $marker = new Marker(
+                        $visit->latitude,
+                        $visit->longitude,
+                        $this->config->getParam("visitors_origin")[$visit->origin],
+                        $visit->timestamp
+                    );
                     $marker->name = sprintf(
                         "%s, %s, %s",
                         $visit->city,

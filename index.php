@@ -20,13 +20,15 @@ class Main {
 
     public function init() {
         $this->config = new Config();
-        $this->reader = new Reader($this->config, new Parser());
+        $this->reader = new Reader($this->config, new Parser($this->config));
         $this->render = new RenderMap($this->config);
         $this->visit_logger = new VisitorsLogging($this->config);
     }
 
     public function run() {
         try{
+            $get_params = $this->getQuerystringParams();
+
             $current_event_markers = $this->reader->getCurrentEvent(
                 $this->config->getParam("current_event_name", "example")
             );
@@ -34,11 +36,26 @@ class Main {
             $this->render->setMarkersToDisplay($current_event_markers);
             $this->render->show();
 
-            $this->visit_logger->log();
+            $this->visit_logger->log($get_params['origin']);
             
         } catch (Exception $e) {
             var_dump($e);
         }
+    }
+
+    private function getQuerystringParams() {
+        $safeGet = filter_input_array(INPUT_GET, [
+            "origin" => FILTER_SANITIZE_STRING
+        ]);
+
+        $get = [
+            'origin' => 'default'
+        ];
+        if(isset($safeGet["origin"]) && !empty($safeGet["origin"]) && isset($this->config->getParam("visitors_origin")[$safeGet["origin"]])) {
+            $get["origin"] = $safeGet["origin"];
+        }
+
+        return $get;
     }
 }
 
