@@ -37,7 +37,17 @@ class VisitorsLogging
             );
             $json_source = json_decode($log_stack, false);
             foreach($json_source as $json_log) {
-                $log_events[]=Visit::fromObject($json_log);
+                $visit=Visit::fromObject($json_log);
+                $key=$this->generateKey($visit);
+                if(isset($log_events[$key])) {
+                    $log_events[$key]->timestamp = $visit->timestamp;
+                    $log_events[$key]->count++;
+                    if($log_events[$key]->origin="default") {
+                        $log_events[$key]->origin=$visit->origin;
+                    }
+                } else {
+                    $log_events[$key]=$visit;
+                }
             }
             return $log_events;
         } else {
@@ -47,6 +57,10 @@ class VisitorsLogging
             );
             return [];
         }
+    }
+
+    private function generateKey(Visit $visit) {
+        return str_replace(".", "", (string)round($visit->latitude, 2)) . "-" .str_replace(".", "", (string)round($visit->longitude, 2));
     }
 
     private function writeLogStack($log_stack) {

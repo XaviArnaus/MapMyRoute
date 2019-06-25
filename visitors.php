@@ -37,10 +37,11 @@ class Main {
                         $visit->timestamp
                     );
                     $marker->name = sprintf(
-                        "%s, %s, %s",
+                        "%s, %s, %s, (%s)",
                         $visit->city,
                         $visit->region_name,
-                        $visit->country_name
+                        $visit->country_name,
+                        $visit->count
                     );
                     $marker->applyTimezoneCorrection($this->config, "Y-m-d H:i:s");
                     return $marker;

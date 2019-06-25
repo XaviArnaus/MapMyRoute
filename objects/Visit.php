@@ -3,8 +3,9 @@
 
 class Visit
 {
-    public $timestamp;
+    public $timestamp; // When count > 1, this is just the last one
     public $origin; // If the visitor used any GET identification param
+    public $count = 1; // Always 1, unless 2 visits from the same coordinates.
 
     public $request_ip;
     public $city;
