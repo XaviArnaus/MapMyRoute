@@ -32,7 +32,8 @@ class Main {
                 );
                 $new_marker = new Marker(
                     floatval($post["lat"]),
-                    floatval($post["lng"])
+                    floatval($post["lng"]),
+                    $this->config->getParam("visitors_origin")['default']
                 );
                 if (isset($post["name"])) {
                     $new_marker->name = $post["name"];
