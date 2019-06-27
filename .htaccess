@@ -1,0 +1,27 @@
+# Uncomment this to autoredirect to SSL (needed for getting browse location)
+#RewriteEngine On
+#RewriteCond %{HTTP:X-Forwarded-SSL} !on
+#RewriteCond %{REQUEST_URI} !^/(.well-known)(/|$)
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+Order deny,allow
+Deny from all
+
+Options All -Indexes
+
+<FilesMatch "^(|index.php|visitors.php|new.php)">
+    Allow from all
+</FilesMatch>
+
+<FilesMatch "\.(js|css)$">
+    Allow from all
+</FilesMatch>
+
+<FilesMatch "\.(json|gitignore)$">
+    Deny from all
+</FilesMatch>
+
+<Files .htaccess>
+    Order allow,deny
+    Deny from all
+</Files>
