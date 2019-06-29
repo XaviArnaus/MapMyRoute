@@ -4,6 +4,7 @@
 #RewriteCond %{REQUEST_URI} !^/(.well-known)(/|$)
 #RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
+# The following should protect all non-execution files to be accessed
 Order deny,allow
 Deny from all
 
@@ -17,7 +18,7 @@ Options All -Indexes
     Allow from all
 </FilesMatch>
 
-<FilesMatch "\.(json|gitignore)$">
+<FilesMatch "\.(json|gitignore|md)$">
     Deny from all
 </FilesMatch>
 
