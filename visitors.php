@@ -36,13 +36,13 @@ class Main {
                             $this->config->getParam("visitors_origin")["default"],
                         $visit->timestamp
                     );
-                    $marker->name = sprintf(
+                    $marker->name = $this->cleanString(sprintf(
                         "%s, %s, %s, (%s)",
                         $visit->city,
                         $visit->region_name,
                         $visit->country_name,
                         $visit->count
-                    );
+                    ));
                     $marker->applyTimezoneCorrection($this->config, "Y-m-d H:i:s");
                     return $marker;
                 },
@@ -56,6 +56,10 @@ class Main {
         } catch (Exception $e) {
             var_dump($e);
         }
+    }
+
+    private function cleanString($string) {
+        return str_replace("'", "`", $string);
     }
 }
 
